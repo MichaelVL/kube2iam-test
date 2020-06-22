@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-cli
+  labels:
+    app: aws-cli
+  annotations:
+    iam.amazonaws.com/role: arn:aws:iam::706248377222:role/nn-role-1
+spec:
+  containers:
+  - image: amazon/aws-cli
+    command:
+      - "sleep"
+      - "7200"
+    name: aws-cli
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-cli2
+  labels:
+    app: aws-cli2
+  annotations:
+    iam.amazonaws.com/role: arn:aws:iam::706248377222:role/nn-role-2
+spec:
+  containers:
+  - image: amazon/aws-cli
+    command:
+      - "sleep"
+      - "7200"
+    name: aws-cli
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
